@@ -22,7 +22,11 @@ Passos concluídos:
 
     - Raridade (com base na cor do contorno do ícone)
 
-    - A implementar: Fonte (ex: vendido por NPC, drop de monstro...)
+---
+
+- A implementar:
+
+- Coleta: extrair a Fonte do item (ex: vendido por NPC, drop de monstro...)
 
 - Análise: 
 
