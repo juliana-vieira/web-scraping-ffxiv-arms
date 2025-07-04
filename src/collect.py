@@ -2,8 +2,6 @@
 
 import pandas as pd
 import requests_cache
-import requests_cache
-import time
 import requests
 
 from bs4 import BeautifulSoup
@@ -11,7 +9,6 @@ from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from joblib import Parallel, delayed
 from requests_cache import NEVER_EXPIRE
-from random import uniform
 
 # %%
 
@@ -50,7 +47,7 @@ params = {
 # Configuração de cache thread-safe
 try:
     requests_cache.install_cache(
-        'ffxiv_cache', # Cria um diretório chamado 'ffxiv_cache'
+        '../ffxiv_cache', # Cria um diretório chamado 'ffxiv_cache'
         backend='filesystem', # Armazena o cache no disco (mais rápido que sqlite)
         expire_after=NEVER_EXPIRE, # Cache setado para não expirar, porém é uma boa prática expirar em 1 hora
         allowable_methods=['GET'], # Métodos permitidos no cache. Estamos somente fazendo GET 
@@ -105,7 +102,6 @@ def extrair_infos_arma(url_itens):
                 session.cookies.update(cookies) # Adiciona os parâmetros (headers e cookies) definidos anteriormente
                 session.headers.update(headers)
 
-                time.sleep(uniform(0.5, 1.5))
                 resp = session.get(url, params=params, timeout=10)
                 soup = BeautifulSoup(resp.text, 'html.parser')
 
@@ -135,6 +131,18 @@ def extrair_infos_arma(url_itens):
                             nome, valor = stat.text.split("+")
                             data[nome.strip()] = f"+{valor.strip()}"
 
+                obtained_from = soup.find("table", class_="db-table db-table__item_source")
+                data["Obtained From"] = [item.text for item in obtained_from.find_all("tr")] if obtained_from is not None else "N/A"
+                
+                div_acquired_from = soup.find_all("div", class_="db-view__data__inner--select_reward")
+                if len(div_acquired_from) > 0:
+                    itens = [item.text for item in div_acquired_from]
+
+                else: 
+                    itens = "N/A"
+
+                data["Acquired From"] = itens
+                
                 return data
             
         except Exception as e:
@@ -183,7 +191,11 @@ with ThreadPoolExecutor(max_workers=10) as executor:
             dados_completos.extend(resultado)
                         
 df = pd.DataFrame(dados_completos)
-df.to_parquet("armas_final_fantasy.parquet")
-print(f"Finalizado! {len(df)} itens salvos.")
 
+print(f"Finalizado! {len(df)} itens obtidos.")
 # %%
+
+df.to_csv("../data/armas_final_fantasy.csv", index = False)
+print(f"Itens salvos no arquivo CSV.")
+
+#%%
