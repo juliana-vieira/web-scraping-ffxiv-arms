@@ -22,7 +22,7 @@ Passos concluídos:
 
     - Raridade (com base na cor do contorno do ícone)
       
-    - Extrair a Fonte do item (ex: vendido por NPC, coffer, comprado com tomestones...)
+    - Extrair a Fonte do item (ex: vendido por NPC, obtido por coffer, comprado com tomestones...)
 
 ---
 
