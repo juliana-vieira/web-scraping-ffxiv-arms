@@ -1,3 +1,5 @@
 *.json
-*.parquet
+*.csv
 *.sqlite
+.venv
+ffxiv_cache
