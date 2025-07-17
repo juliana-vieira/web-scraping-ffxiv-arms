@@ -24,17 +24,16 @@ Passos concluídos:
       
     - Extrair a Fonte do item (ex: vendido por NPC, obtido por coffer, comprado com tomestones...)
 
+    - Otimização do script de coleta utilizando threads e paralelização.
+
 ---
 
 ### A implementar:
-  
-- Coleta:
-  
-    - Otimização do script de coleta utilizando threads e paralelização.
 
 - Transformação:
   
   - Limpeza dos dados utilizando Pandas.
+  - Inserção em um banco de dados SQLite.
 
 - Análise: 
 
@@ -44,7 +43,7 @@ Passos concluídos:
     - Quais armas têm os maiores bônus de força ou vitalidade?
     - Qual é a distribuição de raridade entre todas as armas?
 
-- Data-viz: criar gráficos simples com matplotlib ou seaborn, como:
+- Data-viz: criar gráficos simples como:
 
     - Gráfico de barras: quantidade de armas por tipo
     - Boxplot: distribuição de dano por raridade
