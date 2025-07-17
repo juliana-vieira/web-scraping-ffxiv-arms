@@ -4,7 +4,7 @@ Repositório do projeto de análise de armas do Final Fantasy XIV.
 
 Passos concluídos:
 
-- Coleta: Extrair os dados de armas do Final Fanatsy XIV com as seguintes informações:
+- Coleta: Extrair os dados de armas do Final Fanatsy XIV do [Eorzea Database](https://na.finalfantasyxiv.com/lodestone/playguide/db/item/?category2=1) com as seguintes informações:
 
     - Nome da arma
 
@@ -21,12 +21,20 @@ Passos concluídos:
     - Dano físico / Auto-ataque / Delay
 
     - Raridade (com base na cor do contorno do ícone)
+      
+    - Extrair a Fonte do item (ex: vendido por NPC, obtido por coffer, comprado com tomestones...)
 
 ---
 
-- A implementar:
+### A implementar:
+  
+- Coleta:
+  
+    - Otimização do script de coleta utilizando threads e paralelização.
 
-- Coleta: extrair a Fonte do item (ex: vendido por NPC, drop de monstro...)
+- Transformação:
+  
+  - Limpeza dos dados utilizando Pandas.
 
 - Análise: 
 
