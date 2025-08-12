@@ -35,18 +35,3 @@ Passos concluídos:
 - Transformação:
   
   - Limpeza dos dados utilizando Pandas.
-
-- Análise: 
-
-    - Qual tipo de arma tem maior dano médio?
-    - Como o dano físico aumenta conforme o nível do item?
-    - Qual classe tem mais opções de armas disponíveis?
-    - Quais armas têm os maiores bônus de força ou vitalidade?
-    - Qual é a distribuição de raridade entre todas as armas?
-
-- Data-viz: criar gráficos simples com matplotlib ou seaborn, como:
-
-    - Gráfico de barras: quantidade de armas por tipo
-    - Boxplot: distribuição de dano por raridade
-    - Gráfico de dispersão: item level vs. dano
-    - Tabela resumo: top 10 armas com maior dano físico
